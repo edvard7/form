@@ -72,18 +72,18 @@ function appendRobot(robot) {
 
 robots.forEach((robot) => appendRobot(robot));
 
-function createRobot() {
-    let robotID = robots.length ? robots[robots.length - 1].id + 1 : 1;
-    let robotName = document.querySelector("#name").value;
-    let robotEmail = document.querySelector("#email").value;
+// function createRobot() {
+//     let robotID = robots.length ? robots[robots.length - 1].id + 1 : 1;
+//     let robotName = document.querySelector("#name").value;
+//     let robotEmail = document.querySelector("#email").value;
 
-    let newRobot = new Robot(robotID, robotName, robotEmail);
-    robots.push(newRobot);
-    appendRobot(newRobot);
+//     let newRobot = new Robot(robotID, robotName, robotEmail);
+//     robots.push(newRobot);
+//     appendRobot(newRobot);
 
-    document.querySelector("#name").value = "";
-    document.querySelector("#email").value = "";
-}
+//     document.querySelector("#name").value = "";
+//     document.querySelector("#email").value = "";
+// }
 
 document.querySelector("#create").onclick = createRobot;
 
@@ -112,3 +112,22 @@ function showRobotInfo(robot) {
         e.preventDefault();
     }
 }
+
+
+document.forms[0].onsubmit = function(e) {
+    e.preventDefault()
+//   e.target.elements[1].value = e.target.elements[1].value = "@robot.ru"
+console.log (`
+name: ${capitalize(e.target.elements[0].value)}
+email: ${e.target.elements[1].value}
+`)
+}
+
+function capitalize(string){
+    return string[0].toUpperCase() + string.slice(1).toLowerCase()
+}
+
+
+
+
+
